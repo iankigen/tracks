@@ -7,6 +7,7 @@ from graphene_django.types import DjangoObjectType
 class UserType(DjangoObjectType):
     class Meta:
         model = get_user_model()
+        fields = ('id', 'email', 'password', 'username', 'date_joined')
 
 
 class CreateUser(graphene.Mutation):
