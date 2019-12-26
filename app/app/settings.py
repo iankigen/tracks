@@ -32,6 +32,10 @@ APPS = [
     'tracks'
 ]
 
+EXTERNAL_APPS = [
+    'graphene_django',
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,11 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'graphene_django',
 ]
 
-INSTALLED_APPS += APPS
+INSTALLED_APPS += EXTERNAL_APPS + APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Graphene Django Schema
+# Graphene Schema
 GRAPHENE = {
     'SCHEMA': 'app.schema.schema'
 }
