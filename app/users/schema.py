@@ -10,6 +10,13 @@ class UserType(DjangoObjectType):
         fields = ('id', 'email', 'password', 'username', 'date_joined')
 
 
+class Query(graphene.ObjectType):
+    user = graphene.Field(UserType, id=graphene.Int(required=True))
+
+    def resolve_user(self, info, id):
+        return get_user_model().objects.get(id=id)
+
+
 class CreateUser(graphene.Mutation):
     class Arguments:
         username = graphene.String(required=True)
